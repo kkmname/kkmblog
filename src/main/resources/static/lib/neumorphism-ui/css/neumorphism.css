@@ -176,6 +176,11 @@ dd {
 
 blockquote {
     margin: 0 0 1rem;
+    border-left: 3px solid lightgray;
+}
+
+blockquote, p {
+    padding-left: 10px;
 }
 
 b,
