@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index-layout}">
+<main layout:fragment="main">
+    <section class="section bg-soft pb-5 overflow-hidden z-2 mt-6">
+        <div class="container">
+            <div class="row justify-content-center mb-6">
+
+                <div class="col-md-12 col-xl-12">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Subjects</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" th:text="${subject.title}"></li>
+                        </ol>
+                    </nav>
+
+                    <div id="articleList" th:if="${articleList}">
+                        <div th:each="article : ${articleList}" 
+                             class="alert alert-dark shadow-soft position-relative mt-1">
+                            <a class="text-dark font-weight-bold text-underline" 
+                               th:href="@{/view/article/{id}(id=${article.id})}">
+                                <span class="mr-1">
+                                    <span class="fas fa-file-invoice"></span>
+                                </span>
+                                [<span th:text="${article.createdTime}"></span>] 
+                                <span th:text="${article.title}"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</html>

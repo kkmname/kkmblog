@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{index-layout}">
+<main layout:fragment="main">
+    <section class="section bg-soft pb-5 overflow-hidden z-2 mt-6">
+
+        <div class="container">
+            
+            <div class="mb-3">
+                [<span th:text="${article.createdTime}"></span>] 
+                <span class="h6 font-weight-bold" th:text="${article.title}"></span>    
+            </div>
+            <div class="row justify-content-center mb-6">
+                <div class="col-md-12 col-xl-12">
+                    <div class="rounded shadow-soft border border-light bg-soft p-4 mb-2">
+                        <div th:utext="${article.content}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</html>

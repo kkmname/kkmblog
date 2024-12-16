@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{index-layout}">
+<main layout:fragment="main">
+
+    <!-- Section -->
+    <section class="section bg-soft pb-5 overflow-hidden z-2 mt-6">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-12 col-lg-12 justify-content-center">
+                    <div class="card bg-primary shadow-soft border-light p-4">
+                        <div class="card-header text-center pb-0">
+                            <h2 class="mb-0 h5">Wrtie Article</h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="/authed/article" method="post">
+                                <!-- Form -->
+                                <div class="form-group">
+                                    <label for="title">Article title</label>
+                                    <div class="input-group mb-4">
+                                        <input class="form-control" id="title" placeholder="title for article"
+                                            type="text" aria-label="title" name="title" required>
+                                    </div>
+                                    <!-- Form -->
+                                    <div class="form-group">
+                                        <label class="my-1 mr-2" for="subjectId">Subject</label>
+                                        <select class="custom-select my-1 mr-sm-2" id="subjectId" name="subjectId"
+                                            required>
+                                            <option value="" selected>Choose...</option>
+                                            <option value="1">Daily</option>
+                                        </select>
+                                    </div>
+                                    <!-- End of Form -->
+
+                                    <label for="content">Content</label>
+                                    <textarea class="form-control" placeholder="Enter article content..." id="content"
+                                        rows="10" name="content" required></textarea>
+                                </div>
+                                <div class="custom-control custom-switch text-right">
+                                    <input type="checkbox" class="custom-control-input" id="isVisible" name="isVisible" value="true" checked>
+                                    <label class="custom-control-label" for="isVisible">Visible</label>
+                                </div>
+                                <button type="submit" class="btn btn-block btn-primary mt-2">Write</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</html>
