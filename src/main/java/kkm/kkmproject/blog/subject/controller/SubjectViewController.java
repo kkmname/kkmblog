@@ -15,7 +15,7 @@ import kkm.kkmproject.blog.subject.domain.Subject;
 import kkm.kkmproject.blog.subject.service.SubjectService;
 
 @Controller
-@RequestMapping("/view/subject")
+@RequestMapping("/public/view/subject")
 public class SubjectViewController {
 
     @Autowired
@@ -27,13 +27,11 @@ public class SubjectViewController {
     @GetMapping("/{subjectId}")
     public String getArticleList(@PathVariable(name = "subjectId") Long subjectId, Model model) {
         Subject subject = subjectService.getSubjectById(subjectId);
-        List<ArticleResponse> articleList = subjectService.getArticleResponseList(subjectId);
-
-        System.out.println(articleList.size());
-
         model.addAttribute("subject", subject);
+
+        List<ArticleResponse> articleList = subjectService.getArticleResponseList(subjectId);
         model.addAttribute("articleList", articleList);
-        
+
         return "subject";
     }
 }

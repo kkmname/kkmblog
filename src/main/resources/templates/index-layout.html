@@ -37,7 +37,9 @@
                             </div>
                         </div>
                     </div>
-                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center" id="navbar_public">
+                        <!-- sample -->
+                        <!--
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link" data-toggle="dropdown">
                                 <span class="nav-link-inner-text">Subjects</span>
@@ -47,6 +49,7 @@
                                 <li><a class="dropdown-item" href="/view/subject/1">Daily</a></li>
                             </ul>
                         </li>
+                        -->
                     </ul>
                 </div>
                 <div class="d-flex align-items-center">
@@ -59,28 +62,37 @@
         </nav>
     </header>
 
-    <main layout:fragment="main">
-    </main>
+    <!-- main -->
+    <main layout:fragment="main"></main>
 
-    <!-- Core -->
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/lib/headroom.js/dist/headroom.min.js"></script>
+    <!-- 스크립트 포함 영역 -->
+    <div th:fragment="body-scripts">
+        <!-- Core -->
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
+        <script src="/lib/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/lib/headroom.js/dist/headroom.min.js"></script>
 
-    <!-- Vendor JS -->
-    <script src="/lib/onscreen/dist/on-screen.umd.min.js"></script>
-    <script src="/lib/nouislider/distribute/nouislider.min.js"></script>
-    <script src="/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="/lib/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="/lib/jarallax/dist/jarallax.min.js"></script>
-    <script src="/lib/jquery.counterup/jquery.counterup.min.js"></script>
-    <script src="/lib/jquery-countdown/dist/jquery.countdown.min.js"></script>
-    <script src="/lib/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="/lib/prismjs/prism.js"></script>
+        <!-- Vendor JS -->
+        <script src="/lib/onscreen/dist/on-screen.umd.min.js"></script>
+        <script src="/lib/nouislider/distribute/nouislider.min.js"></script>
+        <script src="/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/lib/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="/lib/jarallax/dist/jarallax.min.js"></script>
+        <script src="/lib/jquery.counterup/jquery.counterup.min.js"></script>
+        <script src="/lib/jquery-countdown/dist/jquery.countdown.min.js"></script>
+        <script src="/lib/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+        <script src="/lib/prismjs/prism.js"></script>
 
-    <!-- Neumorphism JS -->
-    <script src="/lib/neumorphism-ui/js/neumorphism.js"></script>
+        <!-- Neumorphism JS -->
+        <script src="/lib/neumorphism-ui/js/neumorphism.js"></script>
+
+        <!-- Custom -->
+        <script src="/js/common.js"></script>
+
+        <!-- Page scripts -->
+        <div th:insert="::extra-scripts"></div>
+    </div>    
 </body>
 
 </html>

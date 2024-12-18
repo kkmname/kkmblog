@@ -11,7 +11,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Subjects</a></li>
+                            <!-- <li class="breadcrumb-item"><a href="#">sample-middle</a></li> -->
                             <li class="breadcrumb-item active" aria-current="page" th:text="${subject.title}"></li>
                         </ol>
                     </nav>
@@ -34,4 +34,8 @@
         </div>
     </section>
 </main>
+
+<div th:fragment="extra-scripts">
+    <!-- <script src="/js/sample.js"></script> -->
+</div>
 </html>

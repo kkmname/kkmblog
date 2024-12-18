@@ -14,7 +14,7 @@ import kkm.kkmproject.blog.subject.domain.dto.SubjectResponse;
 import kkm.kkmproject.blog.subject.service.SubjectService;
 
 @RestController
-@RequestMapping("/public/subject")
+@RequestMapping("/public/api/subject")
 public class SubjectRestController {
 
     @Autowired
