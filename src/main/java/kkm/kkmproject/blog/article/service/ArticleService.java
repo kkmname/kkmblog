@@ -1,5 +1,7 @@
 package kkm.kkmproject.blog.article.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,12 @@ public class ArticleService {
 
     public ArticleResponse getArticleByArticleId(Long articleId) {
         return new ArticleResponse(articleRepository.findById(articleId).get());
+    }
+
+    public List<ArticleResponse> getArticleResponseListBySuectId(Long subjectId) {
+        return articleRepository.findBySubjectIdAndIsAuthedFalseAndIsVisibleTrueOrderByCreatedTimeDesc(subjectId)
+                                .stream()
+                                .map(article -> new ArticleResponse(article))
+                                .toList();
     }
 }

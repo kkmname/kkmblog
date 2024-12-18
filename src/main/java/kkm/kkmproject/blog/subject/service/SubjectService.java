@@ -16,9 +16,6 @@ public class SubjectService {
     @Autowired
     SubjectRepository subjectRepository;
 
-    @Autowired
-    ArticleRepository articleRepository;
-
     public Subject getSubjectById(Long subjectId) {
         return subjectRepository.findById(subjectId).get();
     }
@@ -27,11 +24,5 @@ public class SubjectService {
         return subjectRepository.findByIsAuthedFalseAndIsVisibleTrue().stream()
                                                                       .map(subject -> new SubjectResponse(subject))
                                                                       .toList();
-    }
-
-    public List<ArticleResponse> getArticleResponseList(Long subjectId) {
-        return articleRepository.findBySubjectIdAndIsAuthedFalseAndIsVisibleTrueOrderByCreatedTimeDesc(subjectId).stream()
-                                                                                                                .map(article -> new ArticleResponse(article))
-                                                                                                                .toList();
     }
 }

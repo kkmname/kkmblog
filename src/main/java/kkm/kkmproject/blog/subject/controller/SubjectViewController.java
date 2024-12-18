@@ -29,7 +29,7 @@ public class SubjectViewController {
         Subject subject = subjectService.getSubjectById(subjectId);
         model.addAttribute("subject", subject);
 
-        List<ArticleResponse> articleList = subjectService.getArticleResponseList(subjectId);
+        List<ArticleResponse> articleList = articleService.getArticleResponseListBySuectId(subjectId);
         model.addAttribute("articleList", articleList);
 
         return "subject";

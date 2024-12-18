@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kkm.kkmproject.blog.article.domain.dto.ArticleResponse;
+import kkm.kkmproject.blog.article.service.ArticleService;
 import kkm.kkmproject.blog.subject.domain.dto.SubjectResponse;
 import kkm.kkmproject.blog.subject.service.SubjectService;
 
@@ -20,6 +21,9 @@ public class SubjectRestController {
     @Autowired
     SubjectService subjectService;
 
+    @Autowired
+    ArticleService articleService;
+
     @GetMapping
     public List<SubjectResponse> getSubjectList() {
         return subjectService.getSubjectResponseList();
@@ -27,6 +31,6 @@ public class SubjectRestController {
 
     @GetMapping("/{subjectId}")
     public List<ArticleResponse> getArticleList(@PathVariable(name = "subjectId") Long subjectId, Model model) {
-        return subjectService.getArticleResponseList(subjectId);
+        return articleService.getArticleResponseListBySuectId(subjectId);
     }
 }
