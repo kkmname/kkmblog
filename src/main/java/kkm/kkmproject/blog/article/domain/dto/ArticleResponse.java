@@ -1,6 +1,5 @@
 package kkm.kkmproject.blog.article.domain.dto;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.commonmark.parser.Parser;

@@ -12,15 +12,18 @@
                         <ol class="breadcrumb breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <!-- <li class="breadcrumb-item"><a href="#">sample-middle</a></li> -->
-                            <li class="breadcrumb-item active" aria-current="page" th:text="${subject.title}"></li>
+                            <li id="subject" class="breadcrumb-item active" aria-current="page"></li>
                         </ol>
                     </nav>
 
+                    <div id="articleList"></div>
+
+                    <!--
                     <div id="articleList" th:if="${articleList}">
                         <div th:each="article : ${articleList}" 
                              class="alert alert-dark shadow-soft position-relative mt-1">
                             <a class="text-dark font-weight-bold text-underline" 
-                               th:href="@{/view/article/{id}(id=${article.id})}">
+                               th:href="@{/view/open/article/{id}(id=${article.id})}">
                                 <span class="mr-1">
                                     <span class="fas fa-file-invoice"></span>
                                 </span>
@@ -29,6 +32,7 @@
                             </a>
                         </div>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -36,6 +40,6 @@
 </main>
 
 <div th:fragment="extra-scripts">
-    <!-- <script src="/js/sample.js"></script> -->
+    <script src="/js/subject.js"></script>
 </div>
 </html>

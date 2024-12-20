@@ -1,4 +1,4 @@
-package kkm.kkmproject.blog.subject.controller;
+package kkm.kkmproject.blog.subject.controller.open;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import kkm.kkmproject.blog.subject.domain.dto.SubjectResponse;
 import kkm.kkmproject.blog.subject.service.SubjectService;
 
 @RestController
-@RequestMapping("/public/api/subject")
-public class SubjectRestController {
+@RequestMapping("/api/open/subject")
+public class OpenSubjectApiController {
 
     @Autowired
     SubjectService subjectService;
@@ -30,7 +30,12 @@ public class SubjectRestController {
     }
 
     @GetMapping("/{subjectId}")
-    public List<ArticleResponse> getArticleList(@PathVariable(name = "subjectId") Long subjectId, Model model) {
+    public SubjectResponse getSubject(@PathVariable(name = "subjectId") Long subjectId) {
+        return subjectService.getSubjectById(subjectId);
+    }
+
+    @GetMapping("/{subjectId}/articles")
+    public List<ArticleResponse> getArticleList(@PathVariable(name = "subjectId") Long subjectId) {
         return articleService.getArticleResponseListBySuectId(subjectId);
     }
 }

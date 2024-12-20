@@ -1,14 +1,14 @@
 $(document).ready(function () {
   const subjectResponseList = localStorage.getItem("subjectResponseList");
   if (subjectResponseList) {
-    renderSubject(JSON.parse(subjectResponseList));
+    renderSubjectList(JSON.parse(subjectResponseList));
   } else {
-    fetchSubjectFromAPI();
+    fetchSubjectListFromAPI();
   }
 });
 
-function fetchSubjectFromAPI() {
-  fetch("/public/api/subject")
+function fetchSubjectListFromAPI() {
+  fetch("/api/open/subject")
     .then((response) => response.json())
     .then((data) => {
       localStorage.setItem("subjectResponseList", JSON.stringify(data));
@@ -19,7 +19,7 @@ function fetchSubjectFromAPI() {
     });
 }
 
-function renderSubject(subjectResponseList) {
+function renderSubjectList(subjectResponseList) {
   const nav = document.getElementById("navbar_public");
   nav.innerHTML = "";
 
@@ -30,18 +30,16 @@ function renderSubject(subjectResponseList) {
       topLevelMenu.className = "nav-item";
 
       const topLink = document.createElement("a");
-      topLink.href = `/public/view/subject/${subjectResponse.id}`;
+      topLink.href = `/view/open/subject/${subjectResponse.id}`;
       topLink.className = "nav-link";
-  
+
       const topText = document.createElement("span");
       topText.className = "nav-link-inner-text";
       topText.textContent = subjectResponse.title;
-      
+
       topLink.appendChild(topText);
       topLevelMenu.appendChild(topLink);
       nav.appendChild(topLevelMenu);
     }
   });
 }
-
-

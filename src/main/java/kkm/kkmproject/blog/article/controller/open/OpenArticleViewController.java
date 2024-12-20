@@ -1,4 +1,4 @@
-package kkm.kkmproject.blog.article.controller;
+package kkm.kkmproject.blog.article.controller.open;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +13,8 @@ import kkm.kkmproject.blog.subject.service.SubjectService;
 
 
 @Controller
-@RequestMapping("/view/article")
-public class ArticleViewController {
+@RequestMapping("/view/open/article")
+public class OpenArticleViewController {
     
     @Autowired
     ArticleService articleService;

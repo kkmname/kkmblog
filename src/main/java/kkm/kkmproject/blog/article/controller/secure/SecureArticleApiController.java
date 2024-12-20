@@ -1,4 +1,4 @@
-package kkm.kkmproject.blog.article.controller;
+package kkm.kkmproject.blog.article.controller.secure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kkm.kkmproject.blog.article.domain.Article;
 import kkm.kkmproject.blog.article.domain.dto.ArticleResponse;
 import kkm.kkmproject.blog.article.domain.dto.ArticleSaveRequest;
 import kkm.kkmproject.blog.article.service.ArticleService;
@@ -16,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/authed/article")
-public class ArticleAuthedController {
+@RequestMapping("/api/secure/article")
+public class SecureArticleApiController {
 
     @Autowired
     SubjectService subjectService;
