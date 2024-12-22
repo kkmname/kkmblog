@@ -13,7 +13,7 @@
                             <h2 class="mb-0 h5">Wrtie Article</h2>
                         </div>
                         <div class="card-body">
-                            <form action="/authed/article" method="post">
+                            <form action="/api/secure/article" method="post">
                                 <!-- Form -->
                                 <div class="form-group">
                                     <label for="title">Article title</label>
@@ -28,6 +28,7 @@
                                             required>
                                             <option value="" selected>Choose...</option>
                                             <option value="1">Daily</option>
+                                            <option value="3">Tech</option>
                                         </select>
                                     </div>
                                     <!-- End of Form -->
@@ -48,5 +49,9 @@
             </div>
         </div>
     </section>
+    <!-- 스크립트 추가 -->
+    <div th:fragment="extra-scripts">
+        <script src="/js/sample.js"></script>
+    </div>
 </main>
 </html>
