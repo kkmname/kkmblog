@@ -11,7 +11,7 @@ function fetchSubjectListFromAPI() {
   fetch("/api/open/subject")
     .then((response) => response.json())
     .then((data) => {
-      localStorage.setItem("subjectResponseList", JSON.stringify(data));
+      // localStorage.setItem("subjectResponseList", JSON.stringify(data));
       renderSubject(data);
     })
     .catch((error) => {
