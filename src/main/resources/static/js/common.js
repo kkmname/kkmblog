@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const subjectResponseList = localStorage.getItem("subjectResponseList");
+  const subjectResponseList = sessionStorage.getItem("subjectResponseList");
   if (subjectResponseList) {
     renderSubjectList(JSON.parse(subjectResponseList));
   } else {
@@ -11,7 +11,7 @@ function fetchSubjectListFromAPI() {
   fetch("/api/open/subject")
     .then((response) => response.json())
     .then((data) => {
-      // localStorage.setItem("subjectResponseList", JSON.stringify(data));
+      sessionStorage.setItem("subjectResponseList", JSON.stringify(data));
       renderSubject(data);
     })
     .catch((error) => {
