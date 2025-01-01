@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const subjectResponseList = sessionStorage.getItem("subjectResponseList");
   if (subjectResponseList) {
     renderSubjectList(JSON.parse(subjectResponseList));

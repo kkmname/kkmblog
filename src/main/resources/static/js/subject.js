@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const tokens = window.location.pathname.split("/");
   const subjectId = tokens[tokens.length - 1];
 
