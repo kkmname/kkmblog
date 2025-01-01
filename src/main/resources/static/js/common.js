@@ -12,7 +12,7 @@ function fetchSubjectListFromAPI() {
     .then((response) => response.json())
     .then((data) => {
       sessionStorage.setItem("subjectResponseList", JSON.stringify(data));
-      renderSubject(data);
+      renderSubjectList(data);
     })
     .catch((error) => {
       console.error("Menu data fetch failed:", error);
