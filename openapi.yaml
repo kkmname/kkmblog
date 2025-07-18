@@ -1,0 +1,523 @@
+openapi: 3.0.3
+info:
+  title: kkmblog API
+  version: 0.0.1
+  description: blog-api.kkmserver.com
+
+servers:
+  - url: http://blog-api.kkmserver.com:8080
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    CategoryRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        priority:
+          type: integer
+        isDisplayed:
+          type: boolean
+    CategoryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        priority:
+          type: integer
+
+    ArticleRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        categoryId:
+          type: integer
+        isDisplayed:
+          type: boolean
+          
+    ArticleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        category:
+          $ref: '#/components/schemas/CategoryResponse'
+
+    ArticleListRequest:
+      type: object
+      properties:
+        categoryId:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+
+    CommentRequest:
+      type: object
+      properties:
+        articleId:
+          type: integer
+        content:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        isDisplayed:
+          type: boolean
+          
+    CommentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        articleId:
+          type: integer
+        content:
+          type: string
+
+    CommentListRequest:
+      type: object
+      properties:
+        articleId:
+          type: integer
+
+    SubscriptionRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+    SubscriptionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+
+    UserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        systemKey:
+          type: string
+          format: uuid
+          
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          
+    JwtResponse:
+      type: object
+      properties:
+        token:
+          type: string
+
+paths:
+  /api/categories:
+    get:
+      tags: [Category]
+      summary: 모든 카테고리 조회
+      responses:
+        '200':
+          description: 카테고리 목록
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryResponse'
+    post:
+      tags: [Category]
+      summary: 카테고리 생성
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      responses:
+        '201':
+          description: 생성 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+
+  /api/categories/{id}:
+    get:
+      tags: [Category]
+      summary: 카테고리 단건 조회
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 단일 카테고리
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+    
+    put:
+      tags: [Category]
+      summary: 카테고리 수정
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      responses:
+        '200':
+          description: 수정 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+
+    delete:
+      tags: [Category]
+      summary: 카테고리 삭제
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: 삭제 완료
+
+  /api/articles:
+    post:
+      tags: [Article]
+      summary: 게시글 생성
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleRequest'
+      responses:
+        '201':
+          description: 생성 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleResponse'
+
+  /api/articles/list:
+    post:
+      tags: [Article]
+      summary: 카테고리 기준 게시글 목록 조회 (페이징)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleListRequest'
+      responses:
+        '200':
+          description: 게시글 리스트
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArticleResponse'
+
+  /api/articles/{id}:
+    get:
+      tags: [Article]
+      summary: 게시글 단건 조회
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 게시글 반환
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleResponse'
+    put:
+      tags: [Article]
+      summary: 게시글 수정
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleRequest'
+      responses:
+        '200':
+          description: 수정 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleResponse'
+    delete:
+      tags: [Article]
+      summary: 게시글 삭제
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: 삭제 완료
+
+  /api/comments:
+    post:
+      tags: [Comment]
+      summary: 댓글 작성 (이메일/비밀번호 필요)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+      responses:
+        '201':
+          description: 작성 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+
+  /api/comments/list:
+    post:
+      tags: [Comment]
+      summary: 게시글 기준 댓글 목록 조회
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentListRequest'
+      responses:
+        '200':
+          description: 댓글 리스트
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentResponse'
+
+  /api/comments/{id}/verify:
+    post:
+      tags: [Comment]
+      summary: 비회원 댓글 삭제/수정 인증
+      operationId: verifyCommentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: 인증 성공
+          links:
+            UpdateComment:
+              operationId: updateCommentById
+              parameters:
+                id: $request.path.id
+              description: 인증 성공 후 댓글 수정 가능
+            DeleteComment:
+              operationId: deleteCommentById
+              parameters:
+                id: $request.path.id
+              description: 인증 성공 후 댓글 삭제 가능
+        '401':
+          description: 인증 실패
+
+  /api/comments/{id}:
+    put:
+      tags: [Comment]
+      summary: 댓글 수정 (JWT 또는 사전 인증 필요)
+      operationId: updateCommentById
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CommentRequest'
+      responses:
+        '200':
+          description: 수정 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+
+    delete:
+      tags: [Comment]
+      summary: 댓글 삭제 (JWT 또는 사전 인증 필요)
+      operationId: deleteCommentById
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: 삭제 완료
+
+  /api/subscriptions:
+    post:
+      tags: [Subscription]
+      summary: 이메일 구독 신청
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+      responses:
+        '201':
+          description: 생성 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionResponse'
+
+  /api/subscriptions/{email}:
+    delete:
+      tags: [Subscription]
+      summary: 이메일 구독 해제
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '204':
+          description: 구독 해제 완료
+
+  /api/users:
+    post:
+      tags: [User]
+      summary: 관리자 유저 생성 (systemKey 필요)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: 생성 완료
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+
+  /api/auth/login:
+    post:
+      tags: [Auth]
+      summary: 관리자 로그인 (JWT 발급)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: JWT 토큰 발급
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwtResponse'
