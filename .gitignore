@@ -1,0 +1,85 @@
+############
+### Java ###
+############
+*.class
+*.log
+
+####################
+### Build target ###
+####################
+*.jar
+*.war
+*.ear
+
+###########
+### IDE ###
+###########
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+##############
+### Gradle ###
+##############
+.gradle/
+build/
+out/
+target/
+
+# gradle wrapper jar 파일 제외
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+
+###################
+### Spring Boot ###
+###################
+# 환경설정 파일 (환경별 값 포함)
+application-*.yml
+application-*.properties
+
+####################
+### OS 생성 파일 ###
+####################
+.DS_Store
+Thumbs.db
+
+########################
+### 로그 & 임시 파일 ###
+########################
+logs/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+#####################
+### 테스트 산출물 ###
+#####################
+test-output/
+reports/
+
+##############
+### Lombok ###
+##############
+*.factorypath
+
+##################################
+### 데이터베이스 (H2 / SQLite) ###
+##################################
+*.db
+*.mv.db
+*.trace.db
+*.sqlite
+*.db-journal
