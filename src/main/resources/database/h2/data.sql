@@ -1,18 +1,18 @@
-INSERT INTO category (id, name, description, parent_id, display_order, is_active, created_at, updated_at) VALUES 
-(1, 'Home', '메인 홈 페이지 카테고리', NULL, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(2, 'Journal', '공개 블로그 아티클 카테고리', NULL, 2, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(3, 'Private', '비공개 아티클 카테고리', NULL, 3, FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO category (id, title, slug, description, parent_id, position, is_active, created_date, updated_date) VALUES 
+(1, 'Home', 'home', '메인 홈 페이지 카테고리', NULL, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(2, 'Journal', 'journal','공개 블로그 아티클 카테고리', NULL, 2, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(3, 'Private', 'private','비공개 아티클 카테고리', NULL, 3, FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO category (id, name, description, parent_id, display_order, is_active, created_at, updated_at) VALUES 
-(4, 'kwangminkim', '개인 카테고리', 3, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(5, 'draft', '초안', 3, 2, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(6, 'api', 'API 관련 노트', 3, 3, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(7, 'git', 'Git 관련 노트', 3, 4, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(8, 'java', 'Java 개발 노트', 3, 5, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(9, 'linux', 'Linux 관련 노트', 3, 6, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(10, 'projects', '프로젝트 관련 노트', 3, 7, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(11, 'vscode', 'VSCode 관련 노트', 3, 8, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(12, 'windows', 'Windows 관련 노트', 3, 9, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO category (id, title, slug, description, parent_id, position, is_active, created_date, updated_date) VALUES 
+(4, 'kwangminkim', 'kwangminkim', '개인 카테고리', 3, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(5, 'draft', 'draft', '초안', 3, 2, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(6, 'api', 'api','API 관련 노트', 3, 3, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(7, 'git', 'git','Git 관련 노트', 3, 4, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(8, 'java', 'java','Java 개발 노트', 3, 5, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(9, 'linux', 'linux','Linux 관련 노트', 3, 6, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(10, 'projects', 'projects','프로젝트 관련 노트', 3, 7, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(11, 'vscode', 'vscode','VSCode 관련 노트', 3, 8, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(12, 'windows', 'windows','Windows 관련 노트', 3, 9, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 ALTER TABLE Category ALTER COLUMN id RESTART WITH 13;
 
