@@ -1,10 +1,5 @@
 package com.kkmserver.blog.category.domain;
 
-import java.time.LocalDateTime;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import com.kkmserver.blog.common.domain.BaseEntity;
 
 import jakarta.persistence.Column;
