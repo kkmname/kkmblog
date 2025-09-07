@@ -12,12 +12,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Table(name = "Category")
 @Getter
-@Setter
+@Table(name = "categories")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -44,4 +42,13 @@ public class Category extends BaseEntity {
 
     @Builder.Default
     private int position = 0;
+
+    public void update(Long parentId, String title, String slug, String description, boolean isActive, int position) {
+        this.parentId = parentId;
+        this.title = title;
+        this.slug = slug;
+        this.description = description;
+        this.isActive = isActive;
+        this.position = position;
+    }
 }

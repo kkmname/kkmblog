@@ -1,4 +1,4 @@
-CREATE TABLE Category (
+CREATE TABLE categories (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     parent_id BIGINT,
     title VARCHAR(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE Category (
     deleted_date TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,
     position INT DEFAULT 0,
-    CONSTRAINT fk_parent FOREIGN KEY (parent_id) REFERENCES Category(id)
+    CONSTRAINT fk_parent FOREIGN KEY (parent_id) REFERENCES categories(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
@@ -23,7 +23,7 @@ CREATE TABLE Article (
     updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deleted_date TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,
-    CONSTRAINT fk_article_category FOREIGN KEY (category_id) REFERENCES Category(id)
+    CONSTRAINT fk_article_category FOREIGN KEY (category_id) REFERENCES categories(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
