@@ -232,7 +232,7 @@
 
 /* ===== 인용구, 구분선, 링크, 하이라이트, 이미지, 테이블 ===== */
 .tiptap-editor .ProseMirror blockquote { border-left:3px solid var(--tt-primary); margin:1em 0; padding:0.5em 1em; color:var(--tt-muted); background:var(--tt-blockquote-bg); border-radius:0 8px 8px 0; }
-.tiptap-editor .ProseMirror hr { border:0; border-top:1px solid var(--tt-border); margin:0; }
+.tiptap-editor .ProseMirror hr { border:0; border-top:1px solid var(--tt-border); margin:0.5em 0; }
 .tiptap-editor .ProseMirror a { color:var(--tt-primary); text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
 .tiptap-editor .ProseMirror a:hover { opacity:0.8; }
 .tiptap-editor .ProseMirror mark { background:var(--tt-highlight); padding:0 0.25em; border-radius:4px; }
