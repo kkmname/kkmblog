@@ -1,12 +1,12 @@
 INSERT INTO categories (id, title, slug, description, parent_id, position, is_active, created_date, updated_date) VALUES 
 (1, 'Home', 'home', '홈', NULL, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (2, 'Daily', 'daily','일상', NULL, 2, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(3, 'Personal', 'personal','비공개', NULL, 3, FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+(3, 'Personal', 'personal','비공개', NULL, 3, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO categories (id, title, slug, description, parent_id, position, is_active, created_date, updated_date) VALUES 
 (4, 'Development', 'development', '개발', 3, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 (5, 'Projects', 'projects', '프로젝트', 4, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-(6, 'paper', 'paper', 'kkm-papar project', 4, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+(6, 'paper', 'paper', 'kkm-papar project', 5, 1, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 
 (7, 'Draft', 'draft', '초안', 3, 2, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 

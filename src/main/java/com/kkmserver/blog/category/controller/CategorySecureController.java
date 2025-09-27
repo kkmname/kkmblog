@@ -22,9 +22,9 @@ import lombok.AllArgsConstructor;
 
 
 @RestController
-@RequestMapping("/admin/categories")
+@RequestMapping("/api/v0/categories")
 @AllArgsConstructor
-public class AdminCategoryController {
+public class CategorySecureController {
 
     private final CategoryService categoryService;
     

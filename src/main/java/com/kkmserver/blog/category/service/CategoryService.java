@@ -28,6 +28,10 @@ public class CategoryService {
         return categories.stream().map(category -> CategoryResponse.from(category)).toList();
     }
 
+    public Category getCategoryById(Long id) {
+        return categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + id));
+    }
+
     public CategoryResponse createCategory(CategoryRequest categoryRequest) {
         Category category = Category.builder()
                                     .parentId(categoryRequest.getParentId())
