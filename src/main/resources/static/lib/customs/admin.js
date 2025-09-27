@@ -108,7 +108,7 @@ async function createArticleManagement() {
 
     const article_title_input = document.createElement("input");
     article_title_input.type = "text";
-    // article_title_input.id = "title";
+    article_title_input.id = "title";
     article_title_input.name = "title";
     article_title_input.setAttribute("required", "true");
 
